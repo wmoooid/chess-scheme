@@ -6,8 +6,11 @@ import * as stylex from '@stylexjs/stylex';
 
 const styles = stylex.create({
     defaults: {
+        display: 'flex',
+        flexDirection: 'column',
         flexGrow: 1,
         color: colors.mainColor,
+        backgroundColor: colors.mainBackground,
     },
 });
 
@@ -15,7 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <div {...stylex.props(styles.defaults)}>
             <Header />
-            {children}
+            <main>{children}</main>
             <Footer />
         </div>
     );

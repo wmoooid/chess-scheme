@@ -10,7 +10,7 @@ const pallete: ColorPallete = {
     red: '#EA2A2D',
     white: '#FFF',
     black: '#323233',
-    grey30: '#494D54',
+    grey30: '#42464D',
     grey50: '#79818C',
     grey85: '#D4D6D9',
     grey90: '#E3E7ED',
