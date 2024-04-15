@@ -13,7 +13,7 @@ const pallete: ColorPallete = {
     grey30: '#42464D',
     grey50: '#79818C',
     grey85: '#D4D6D9',
-    grey90: '#E3E7ED',
+    grey90: '#E6EAF0',
     grey95: '#F3F5F7',
 };
 
