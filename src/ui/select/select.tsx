@@ -45,6 +45,7 @@ const styles = stylex.create({
         color: {
             default: colors.mainColor,
             ":is([data-state='checked'])": colors.white,
+            ':is([data-highlighted])': colors.mainColor,
         },
         backgroundColor: {
             default: null,
