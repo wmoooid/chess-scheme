@@ -4,10 +4,11 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons
 import { colors } from '@/app/globals.stylex';
 
 const styles = stylex.create({
-    select_root: {
+    select_trigger: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        gap: '0.5rem',
 
         width: '100%',
         height: '3.5rem',
@@ -55,11 +56,13 @@ const styles = stylex.create({
     },
 });
 
-export default function SelectComponent({ values }: Readonly<{ values: string[] }>) {
+export type SelectComponentList = string[];
+
+export default function SelectComponent({ values }: { values: SelectComponentList }) {
     return (
-        <Select.Root>
-            <Select.Trigger {...stylex.props(styles.select_root)}>
-                <Select.Value placeholder='Project' />
+        <Select.Root defaultValue={values[0]}>
+            <Select.Trigger {...stylex.props(styles.select_trigger)}>
+                <Select.Value />
                 <Select.Icon style={{ display: 'flex' }}>
                     <ChevronDownIcon />
                 </Select.Icon>

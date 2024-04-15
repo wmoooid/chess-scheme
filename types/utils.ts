@@ -1,0 +1,2 @@
+export type RequireOne<T> = T & { [P in keyof T]: Required<Pick<T, P>> }[keyof T];
+export type Prettify<T> = { [K in keyof T]: T[K] } & object;

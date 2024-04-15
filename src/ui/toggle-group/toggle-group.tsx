@@ -4,29 +4,23 @@ import { colors } from '@/app/globals.stylex';
 import { ReactNode } from 'react';
 
 const styles = stylex.create({
-    wrapper: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-
-    heading: {
-        fontSize: '1.75rem',
-        fontWeight: 500,
-        letterSpacing: '-0.03rem',
-    },
-
     tabs_list: {
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem',
+        width: '100%',
+        height: '100%',
     },
 
     tabs_item: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         gap: '0.5rem',
         padding: '0.5rem 1rem',
+
+        width: '100%',
+        height: '100%',
 
         color: {
             default: colors.mainColor,
@@ -39,6 +33,10 @@ const styles = stylex.create({
         pointerEvents: {
             default: 'all',
             ":is([data-state='on'])": 'none',
+        },
+        fontWeight: {
+            default: 400,
+            ":is([data-state='on'])": 500,
         },
 
         transitionProperty: 'background-color color',
@@ -53,17 +51,15 @@ const styles = stylex.create({
     },
 
     tabs_text: {
-        fontSize: '0.875rem',
+        fontSize: 'inherit',
         color: 'inherit',
     },
 });
 
-export type ToggleItemProps = {
-    name: string;
-    icon: ReactNode;
-};
+export type ToggleGroupItemProps = { name: string; icon?: ReactNode };
+export type ToggleGroupComponentList = ToggleGroupItemProps[];
 
-export function ToggleGroupComponent({ itemsList }: { itemsList: ToggleItemProps[] }) {
+export function ToggleGroupComponent({ itemsList }: { itemsList: ToggleGroupComponentList }) {
     return (
         <ToggleGroup.Root type='single' defaultValue={itemsList[0].name} asChild>
             <menu {...stylex.props(styles.tabs_list)}>
@@ -75,11 +71,11 @@ export function ToggleGroupComponent({ itemsList }: { itemsList: ToggleItemProps
     );
 }
 
-function ToggleGroupItem({ name, icon }: ToggleItemProps) {
+function ToggleGroupItem({ name, icon }: ToggleGroupItemProps) {
     return (
         <ToggleGroup.Item value={name} asChild>
             <li {...stylex.props(styles.tabs_item)}>
-                <span {...stylex.props(styles.tabs_icon)}>{icon}</span>
+                {icon && <span {...stylex.props(styles.tabs_icon)}>{icon}</span>}
                 <span {...stylex.props(styles.tabs_text)}>{name}</span>
             </li>
         </ToggleGroup.Item>
