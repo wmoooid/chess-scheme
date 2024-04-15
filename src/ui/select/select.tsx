@@ -11,7 +11,6 @@ const styles = stylex.create({
         gap: '0.5rem',
 
         width: '100%',
-        height: '3.5rem',
         padding: '1rem',
 
         backgroundColor: colors.mainBackground,
@@ -75,7 +74,7 @@ export default function SelectComponent({ values }: { values: SelectComponentLis
                     </Select.ScrollUpButton>
                     <Select.Viewport>
                         {values.map((name) => (
-                            <SelectItem name={name} />
+                            <SelectItem key={name} name={name} />
                         ))}
                     </Select.Viewport>
                     <Select.ScrollDownButton>
