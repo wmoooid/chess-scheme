@@ -17,7 +17,7 @@ const styles = stylex.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: '0.5rem',
-        padding: '0.5rem 0.5rem',
+        padding: '0.5rem 0.75rem',
 
         width: '100%',
         height: '100%',

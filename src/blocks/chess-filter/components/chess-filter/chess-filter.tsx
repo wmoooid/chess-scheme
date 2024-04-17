@@ -1,7 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { FilterHeader } from '../filter-header/filter-header';
 import { FilterBody } from '../filter-body/filter-body';
-import { FilterFooter } from '../filter-footer/filter-footer';
 import { colors, globals } from '@/app/globals.stylex';
 
 const styles = stylex.create({

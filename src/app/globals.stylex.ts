@@ -6,6 +6,8 @@ type ColorPallete = Readonly<{ [key: string]: ColorValueHex }>;
 const DARK = '@media (prefers-color-scheme: dark)';
 
 const pallete: ColorPallete = {
+    green: '#27AE60',
+    yellow: '#FFCF55',
     blue: '#0068FA',
     red: '#EA2A2D',
     white: '#FFF',
@@ -19,6 +21,8 @@ const pallete: ColorPallete = {
 
 export const colors = stylex.defineVars({
     red: pallete.red,
+    green: pallete.green,
+    yellow: pallete.yellow,
     white: pallete.white,
     grey50: pallete.grey50,
 
