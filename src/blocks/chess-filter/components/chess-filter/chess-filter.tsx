@@ -6,14 +6,15 @@ import { colors, globals } from '@/app/globals.stylex';
 
 const styles = stylex.create({
     section: {
-        marginTop: '1rem',
+        marginTop: '0',
     },
     wrapper: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '1.5rem',
+        gap: '1.25rem',
 
-        padding: '1.75rem',
+        padding: '1.5rem 1.75rem',
+        paddingBottom: '2.25rem',
 
         borderRadius: '1rem',
         backgroundColor: colors.accentBackground,
@@ -27,7 +28,7 @@ export function ChessFilter() {
                 <div {...stylex.props(styles.wrapper)}>
                     <FilterHeader />
                     <FilterBody />
-                    <FilterFooter />
+                    {/* <FilterFooter /> */}
                 </div>
             </div>
         </section>

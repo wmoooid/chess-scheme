@@ -10,7 +10,7 @@ const styles = stylex.create({
     filter_list: {
         display: 'flex',
         alignItems: 'stretch',
-        gap: '1.5rem',
+        gap: '2rem',
     },
 
     filter_item: {

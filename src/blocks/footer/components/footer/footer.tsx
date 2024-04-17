@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 
 const styles = stylex.create({
     wrapper: {
-        padding: '2rem 0',
+        padding: '1.5rem 0',
     },
     text: {
         fontSize: '0.75rem',

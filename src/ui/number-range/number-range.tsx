@@ -43,7 +43,7 @@ const styles = stylex.create({
         borderWidth: 0,
         background: 'none',
 
-        padding: '1rem',
+        padding: '0.75rem 1rem',
     },
 
     slider_root: {

@@ -4,13 +4,13 @@ import * as stylex from '@stylexjs/stylex';
 const styles = stylex.create({
     wrapper: {
         display: 'flex',
-        padding: '2rem 0',
+        padding: '1.5rem 0',
     },
     logoWrapper: {
         userSelect: 'none',
     },
     logoText: {
-        fontSize: '1.125rem',
+        fontSize: '1rem',
     },
 });
 

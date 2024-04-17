@@ -11,7 +11,8 @@ const styles = stylex.create({
         gap: '0.5rem',
 
         width: '100%',
-        padding: '1rem',
+        height: '100%',
+        padding: '0.75rem',
 
         backgroundColor: colors.mainBackground,
 
