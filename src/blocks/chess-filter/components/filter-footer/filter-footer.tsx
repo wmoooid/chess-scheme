@@ -18,7 +18,7 @@ const styles = stylex.create({
     },
 });
 
-export function FilterFooter() {
+export const FilterFooter = () => {
     return (
         <div {...stylex.props(styles.wrapper)}>
             <button {...stylex.props(styles.button)}>
@@ -27,4 +27,4 @@ export function FilterFooter() {
             </button>
         </div>
     );
-}
+};

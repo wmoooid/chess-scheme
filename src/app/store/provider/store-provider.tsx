@@ -8,8 +8,8 @@ type AppStoreProviderProps = {
 
 const AppStore = createReduxStore();
 
-function AppStoreProvider({ children }: AppStoreProviderProps) {
+const AppStoreProvider = ({ children }: AppStoreProviderProps) => {
     return <Provider store={AppStore}>{children}</Provider>;
-}
+};
 
 export default AppStoreProvider;

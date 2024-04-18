@@ -14,7 +14,7 @@ const styles = stylex.create({
     },
 });
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
         <div {...stylex.props(styles.defaults)}>
             <Header />
@@ -22,4 +22,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Footer />
         </div>
     );
-}
+};
+
+export default RootLayout;

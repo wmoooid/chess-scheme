@@ -39,7 +39,7 @@ const FILTERS_LIST: FilterItemProps[] = [
     { type: 'number-range', name: 'Area', values: '' },
 ];
 
-export function FilterBody() {
+export const FilterBody = () => {
     return (
         <div {...stylex.props(styles.wrapper)}>
             <menu {...stylex.props(styles.filter_list)}>
@@ -50,9 +50,9 @@ export function FilterBody() {
             </menu>
         </div>
     );
-}
+};
 
-function FilterItem({ type, name, values }: FilterItemProps) {
+const FilterItem = ({ type, name, values }: FilterItemProps) => {
     if (type === 'select') {
         return (
             <li {...stylex.props(styles.filter_item)}>
@@ -81,4 +81,4 @@ function FilterItem({ type, name, values }: FilterItemProps) {
     }
 
     return null;
-}
+};

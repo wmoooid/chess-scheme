@@ -20,7 +20,7 @@ const styles = stylex.create({
     },
 });
 
-export function ChessFilter() {
+export const ChessFilter = () => {
     return (
         <section {...stylex.props(styles.section)}>
             <div {...stylex.props(globals.container)}>
@@ -32,4 +32,4 @@ export function ChessFilter() {
             </div>
         </section>
     );
-}
+};

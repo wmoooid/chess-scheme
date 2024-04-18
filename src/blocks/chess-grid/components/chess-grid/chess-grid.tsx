@@ -103,7 +103,7 @@ function generateRandomLayout(lines = 100, cells = 15) {
     return result;
 }
 
-export function ChessGrid() {
+export const ChessGrid = () => {
     const [data, setData] = useState(generateRandomLayout());
     const [isPending, startTransition] = useTransition();
 
@@ -125,7 +125,7 @@ export function ChessGrid() {
             </div>
         </section>
     );
-}
+};
 
 const ChessLine = ({ cellsLine }: ChessLineProps) => {
     return (

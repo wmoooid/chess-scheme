@@ -14,7 +14,7 @@ const styles = stylex.create({
     },
 });
 
-export function Header() {
+export const Header = () => {
     return (
         <header>
             <div {...stylex.props(globals.container)}>
@@ -26,4 +26,4 @@ export function Header() {
             </div>
         </header>
     );
-}
+};

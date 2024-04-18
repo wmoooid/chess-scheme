@@ -58,7 +58,7 @@ const styles = stylex.create({
 
 export type SelectComponentList = string[];
 
-export default function SelectComponent({ values }: { values: SelectComponentList }) {
+const SelectComponent = ({ values }: { values: SelectComponentList }) => {
     return (
         <Select.Root defaultValue={values[0]}>
             <Select.Trigger {...stylex.props(styles.select_trigger)}>
@@ -86,7 +86,7 @@ export default function SelectComponent({ values }: { values: SelectComponentLis
             </Select.Portal>
         </Select.Root>
     );
-}
+};
 
 const SelectItem = ({ name }: Readonly<{ name: string }>) => {
     return (
@@ -98,3 +98,5 @@ const SelectItem = ({ name }: Readonly<{ name: string }>) => {
         </Select.Item>
     );
 };
+
+export default SelectComponent;

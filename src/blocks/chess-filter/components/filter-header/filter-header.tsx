@@ -26,7 +26,7 @@ const TABS_LIST: ToggleGroupItemProps[] = [
     { name: 'List', icon: <ViewHorizontalIcon /> },
 ];
 
-export function FilterHeader() {
+export const FilterHeader = () => {
     return (
         <div {...stylex.props(styles.wrapper)}>
             <h1 {...stylex.props(styles.heading)}>Find an apartment</h1>
@@ -35,4 +35,4 @@ export function FilterHeader() {
             </div>
         </div>
     );
-}
+};

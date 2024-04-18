@@ -85,7 +85,7 @@ const styles = stylex.create({
     },
 });
 
-export default function NumberRangeComponent() {
+const NumberRangeComponent = () => {
     const [values, setValues] = useState([0, 1000]);
 
     return (
@@ -123,4 +123,6 @@ export default function NumberRangeComponent() {
             </Slider.Root>
         </div>
     );
-}
+};
+
+export default NumberRangeComponent;

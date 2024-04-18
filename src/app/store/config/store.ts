@@ -2,8 +2,8 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({});
 
-export function createReduxStore() {
+export const createReduxStore = () => {
     return configureStore({
         reducer: rootReducer,
     });
-}
+};

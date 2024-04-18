@@ -11,7 +11,7 @@ const styles = stylex.create({
     },
 });
 
-export function Footer() {
+export const Footer = () => {
     return (
         <footer>
             <div {...stylex.props(globals.container)}>
@@ -23,4 +23,4 @@ export function Footer() {
             </div>
         </footer>
     );
-}
+};

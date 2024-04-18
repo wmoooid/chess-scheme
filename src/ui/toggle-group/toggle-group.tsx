@@ -59,7 +59,7 @@ const styles = stylex.create({
 export type ToggleGroupItemProps = { name: string; icon?: ReactNode };
 export type ToggleGroupComponentList = ToggleGroupItemProps[];
 
-export function ToggleGroupComponent({ itemsList }: { itemsList: ToggleGroupComponentList }) {
+export const ToggleGroupComponent = ({ itemsList }: { itemsList: ToggleGroupComponentList }) => {
     return (
         <ToggleGroup.Root type='single' defaultValue={itemsList[0].name} asChild>
             <menu {...stylex.props(styles.toggle_list)}>
@@ -69,9 +69,9 @@ export function ToggleGroupComponent({ itemsList }: { itemsList: ToggleGroupComp
             </menu>
         </ToggleGroup.Root>
     );
-}
+};
 
-function ToggleGroupItem({ name, icon }: ToggleGroupItemProps) {
+const ToggleGroupItem = ({ name, icon }: ToggleGroupItemProps) => {
     return (
         <ToggleGroup.Item value={name} asChild>
             <li {...stylex.props(styles.toggle_item)}>
@@ -80,4 +80,4 @@ function ToggleGroupItem({ name, icon }: ToggleGroupItemProps) {
             </li>
         </ToggleGroup.Item>
     );
-}
+};
