@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { colors, globals } from '@/app/globals.stylex';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 const styles = stylex.create({
     section: {
@@ -25,11 +25,14 @@ const styles = stylex.create({
         justifyContent: 'space-between',
         alignItems: 'stretch',
         alignSelf: 'stretch',
-        flexBasis: '100%',
         gap: '0.5rem',
 
+        flexShrink: 0,
+        flexGrow: 1,
+        flexBasis: 1,
+
         padding: '0.65rem',
-        width: '100%',
+        minWidth: '4rem',
 
         borderRadius: '0.375rem',
         color: 'white',
@@ -77,7 +80,7 @@ type ChessCellProps = {
     area: number;
 };
 
-function generateRandomLayout(lines = 5000, cells = 15) {
+function generateRandomLayout(lines = 100, cells = 15) {
     const stateList = ['free', 'booked', 'muted', 'sold'];
     const roomsList = ['St', '1BR', '2BR', '3BR', '4BR', '5BR'];
 
@@ -102,9 +105,16 @@ function generateRandomLayout(lines = 5000, cells = 15) {
 
 export function ChessScheme() {
     const [data, setData] = useState(generateRandomLayout());
+    const [isPending, startTransition] = useTransition();
+
+    const handleClick = () => {
+        startTransition(() => {
+            setData(generateRandomLayout());
+        });
+    };
 
     return (
-        <section onClick={() => setData(generateRandomLayout())} {...stylex.props(styles.section)}>
+        <section onClick={handleClick} {...stylex.props(styles.section)}>
             <div {...stylex.props(globals.container)}>
                 <div {...stylex.props(styles.chess_body)}>
                     {data.map((line) => (
