@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './reset.css';
+import './styles/reset.css';
 import App from './app';
 import RootLayout from './layout';
 

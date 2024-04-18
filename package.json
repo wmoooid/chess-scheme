@@ -14,9 +14,11 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.0.4",
+    "@reduxjs/toolkit": "^2.2.3",
     "@stylexjs/stylex": "^0.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.1"
   },
   "devDependencies": {
     "@stylexjs/eslint-plugin": "^0.5.1",
