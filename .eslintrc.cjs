@@ -8,5 +8,6 @@ module.exports = {
     rules: {
         'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
         '@stylexjs/valid-styles': 'error',
+        '@typescript-eslint/no-unused-vars': 'off',
     },
 };
