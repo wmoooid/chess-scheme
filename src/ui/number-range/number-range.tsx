@@ -1,6 +1,6 @@
 import * as Slider from '@radix-ui/react-slider';
 import * as stylex from '@stylexjs/stylex';
-import { colors } from '@/app/globals.stylex';
+import { colors } from '@/app/styles/globals.stylex';
 import { useState } from 'react';
 
 const styles = stylex.create({

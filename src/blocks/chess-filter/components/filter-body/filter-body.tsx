@@ -1,7 +1,7 @@
 import SelectComponent, { SelectComponentList } from '@/ui/select/select';
 import { ToggleGroupComponent, ToggleGroupComponentList } from '@/ui/toggle-group/toggle-group';
 import * as stylex from '@stylexjs/stylex';
-import { colors } from '@/app/globals.stylex';
+import { colors } from '@/app/styles/globals.stylex';
 import { Prettify } from 'types/utils';
 import NumberRangeComponent from '@/ui/number-range/number-range';
 

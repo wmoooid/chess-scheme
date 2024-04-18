@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import { colors } from '@/app/globals.stylex';
+import { colors } from '@/app/styles/globals.stylex';
 import { ReactNode } from 'react';
 
 const styles = stylex.create({

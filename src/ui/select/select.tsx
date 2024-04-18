@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import * as Select from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import { colors } from '@/app/globals.stylex';
+import { colors } from '@/app/styles/globals.stylex';
 
 const styles = stylex.create({
     select_trigger: {

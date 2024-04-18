@@ -1,7 +1,7 @@
 import Header from '@/blocks/header';
 import Footer from '@/blocks/footer';
 
-import { colors } from '@/app/globals.stylex';
+import { colors } from '@/app/styles/globals.stylex';
 import * as stylex from '@stylexjs/stylex';
 
 const styles = stylex.create({

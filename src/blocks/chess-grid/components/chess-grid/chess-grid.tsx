@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
-import { colors, globals } from '@/app/globals.stylex';
+import { colors, globals } from '@/app/styles/globals.stylex';
 import { useState, useTransition } from 'react';
 
 const styles = stylex.create({
@@ -103,7 +103,7 @@ function generateRandomLayout(lines = 100, cells = 15) {
     return result;
 }
 
-export function ChessScheme() {
+export function ChessGrid() {
     const [data, setData] = useState(generateRandomLayout());
     const [isPending, startTransition] = useTransition();
 

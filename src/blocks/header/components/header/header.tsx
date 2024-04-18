@@ -1,4 +1,4 @@
-import { globals } from '@/app/globals.stylex';
+import { globals } from '@/app/styles/globals.stylex';
 import * as stylex from '@stylexjs/stylex';
 
 const styles = stylex.create({

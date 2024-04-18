@@ -1,11 +1,11 @@
 import ChessFilter from '@/blocks/chess-filter';
-import ChessScheme from '@/blocks/chess-scheme';
+import ChessGrid from '@/blocks/chess-grid';
 
 export default function App() {
     return (
         <>
             <ChessFilter />
-            <ChessScheme />
+            <ChessGrid />
         </>
     );
 }
