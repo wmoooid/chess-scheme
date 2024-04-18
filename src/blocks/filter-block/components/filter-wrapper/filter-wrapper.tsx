@@ -20,7 +20,7 @@ const styles = stylex.create({
     },
 });
 
-export const ChessFilter = () => {
+export const FilterWrapper = () => {
     return (
         <section {...stylex.props(styles.section)}>
             <div {...stylex.props(globals.container)}>

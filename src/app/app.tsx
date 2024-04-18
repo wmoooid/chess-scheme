@@ -1,11 +1,11 @@
-import ChessFilter from '@/blocks/chess-filter';
+import FilterWrapper from '@/blocks/filter-block';
 import ChessGrid from '@/blocks/chess-grid';
 import { AppStoreProvider } from './store';
 
 const App = () => {
     return (
         <AppStoreProvider>
-            <ChessFilter />
+            <FilterWrapper />
             <ChessGrid />
         </AppStoreProvider>
     );
