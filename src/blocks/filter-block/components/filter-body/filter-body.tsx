@@ -1,9 +1,13 @@
-import SelectComponent, { SelectComponentList } from '@/ui/select/select';
-import { ToggleGroupComponent, ToggleGroupComponentList } from '@/ui/toggle-group/toggle-group';
+import SelectComponent from '@/ui/select/select';
+import { ToggleGroupComponent } from '@/ui/toggle-group/toggle-group';
 import * as stylex from '@stylexjs/stylex';
 import { colors } from '@/app/styles/globals.stylex';
-import { Prettify } from 'types/utils';
+
 import NumberRangeComponent from '@/ui/number-range/number-range';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/app/store/config/store';
+import { filterChange } from '../../store/filter-slice';
+import { FilterState, FilterTypes } from '../../types/filter-types';
 
 const styles = stylex.create({
     wrapper: {},
@@ -27,55 +31,47 @@ const styles = stylex.create({
     },
 });
 
-type FilterItemSelect = { type: 'select'; name: string; values: SelectComponentList };
-type FilterItemToggles = { type: 'toggles'; name: string; values: ToggleGroupComponentList };
-type FilterItemNumberRange = { type: 'number-range'; name: string; values: '' };
-type FilterItemProps = Prettify<FilterItemSelect | FilterItemToggles | FilterItemNumberRange>;
-
-const FILTERS_LIST: FilterItemProps[] = [
-    { type: 'select', name: 'Project', values: ['Stonehenge', 'Stonehenge 2', 'Stonehenge 3'] },
-    { type: 'toggles', name: 'Bedrooms', values: [{ name: 'S' }, { name: '1' }, { name: '2' }, { name: '3' }] },
-    { type: 'number-range', name: 'Price', values: '' },
-    { type: 'number-range', name: 'Area', values: '' },
-];
-
 export const FilterBody = () => {
+    const filterState = useSelector((state: RootState) => state.filter);
+
     return (
         <div {...stylex.props(styles.wrapper)}>
             <menu {...stylex.props(styles.filter_list)}>
-                {FILTERS_LIST.map(({ type, name, values }) => (
-                    // @ts-expect-error: strange things happens
-                    <FilterItem key={name} type={type} name={name} values={values} />
+                {filterState.map(({ type, name, values, currentValue }) => (
+                    <FilterItem key={name} type={type} name={name} values={values} currentValue={currentValue} />
                 ))}
             </menu>
         </div>
     );
 };
 
-const FilterItem = ({ type, name, values }: FilterItemProps) => {
-    if (type === 'select') {
+const FilterItem = ({ type, name, values, currentValue }) => {
+    const dispatch = useDispatch();
+    const onValueChange = (value: FilterState['currentValue']) => dispatch(filterChange({ filterName: name, currentValue: value }));
+
+    if (type === FilterTypes.select) {
         return (
             <li {...stylex.props(styles.filter_item)}>
                 <span {...stylex.props(styles.item_caption)}>{name} </span>
-                <SelectComponent values={values} />
+                <SelectComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />
             </li>
         );
     }
 
-    if (type === 'toggles') {
+    if (type === FilterTypes.toggles) {
         return (
             <li {...stylex.props(styles.filter_item)}>
                 <span {...stylex.props(styles.item_caption)}>{name} </span>
-                <ToggleGroupComponent itemsList={values} />
+                <ToggleGroupComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />
             </li>
         );
     }
 
-    if (type === 'number-range') {
+    if (type === FilterTypes.numberRange) {
         return (
             <li {...stylex.props(styles.filter_item)}>
                 <span {...stylex.props(styles.item_caption)}>{name} </span>
-                <NumberRangeComponent />
+                <NumberRangeComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />
             </li>
         );
     }

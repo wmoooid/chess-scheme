@@ -53,14 +53,22 @@ const styles = stylex.create({
             ":is([data-state='checked'])": colors.accentColor,
             ':is([data-highlighted])': colors.accentBackground,
         },
+
+        userSelect: 'none',
     },
 });
 
-export type SelectComponentList = string[];
+export type SelectComponentList = SelectComponentValue[];
+export type SelectComponentValue = string;
+type SelectComponentProps = {
+    values: SelectComponentList;
+    currentValue: SelectComponentValue;
+    onValueChange: (arg1: SelectComponentValue) => void;
+};
 
-const SelectComponent = ({ values }: { values: SelectComponentList }) => {
+const SelectComponent = ({ values, currentValue, onValueChange }: SelectComponentProps) => {
     return (
-        <Select.Root defaultValue={values[0]}>
+        <Select.Root value={currentValue} onValueChange={(newValue) => onValueChange(newValue)}>
             <Select.Trigger {...stylex.props(styles.select_trigger)}>
                 <Select.Value />
                 <Select.Icon style={{ display: 'flex' }}>

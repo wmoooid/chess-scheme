@@ -1,9 +1,11 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import filterReducer from '@/blocks/filter-block/store/filter-slice';
 
-const rootReducer = combineReducers({});
+export const store = configureStore({
+    reducer: {
+        filter: filterReducer,
+    },
+});
 
-export const createReduxStore = () => {
-    return configureStore({
-        reducer: rootReducer,
-    });
-};
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

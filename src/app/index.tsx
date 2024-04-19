@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 
 import './styles/reset.css';
 import App from './app';
-import RootLayout from './layout';
+import AppBoundaries from './boundaries';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RootLayout>
+        <AppBoundaries>
             <App />
-        </RootLayout>
+        </AppBoundaries>
     </React.StrictMode>,
 );

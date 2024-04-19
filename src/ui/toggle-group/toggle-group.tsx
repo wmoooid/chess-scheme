@@ -56,14 +56,22 @@ const styles = stylex.create({
     },
 });
 
-export type ToggleGroupItemProps = { name: string; icon?: ReactNode };
-export type ToggleGroupComponentList = ToggleGroupItemProps[];
+export type ToggleGroupComponentList = ToggleGroupComponentValue[];
+export type ToggleGroupComponentValue = { name: string; icon?: ReactNode };
 
-export const ToggleGroupComponent = ({ itemsList }: { itemsList: ToggleGroupComponentList }) => {
+type ToggleGroupComponentProps = {
+    values: ToggleGroupComponentList;
+    currentValue: ToggleGroupComponentValue['name'];
+    onValueChange: (arg1: ToggleGroupComponentValue['name']) => void;
+};
+
+export const ToggleGroupComponent = ({ values, currentValue, onValueChange }: ToggleGroupComponentProps) => {
+    if (!values) return;
+
     return (
-        <ToggleGroup.Root type='single' defaultValue={itemsList[0].name} asChild>
+        <ToggleGroup.Root type='single' value={currentValue} onValueChange={(newValue) => onValueChange(newValue)} asChild>
             <menu {...stylex.props(styles.toggle_list)}>
-                {itemsList.map(({ name, icon }) => (
+                {values.map(({ name, icon }) => (
                     <ToggleGroupItem key={name} name={name} icon={icon} />
                 ))}
             </menu>
@@ -71,7 +79,7 @@ export const ToggleGroupComponent = ({ itemsList }: { itemsList: ToggleGroupComp
     );
 };
 
-const ToggleGroupItem = ({ name, icon }: ToggleGroupItemProps) => {
+const ToggleGroupItem = ({ name, icon }: ToggleGroupComponentValue) => {
     return (
         <ToggleGroup.Item value={name} asChild>
             <li {...stylex.props(styles.toggle_item)}>

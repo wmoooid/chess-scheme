@@ -85,33 +85,39 @@ const styles = stylex.create({
     },
 });
 
-const NumberRangeComponent = () => {
-    const [values, setValues] = useState([0, 1000]);
+export type NumberRangeComponentValue = [number, number];
 
+type NumberRangeComponentProps = {
+    values: NumberRangeComponentValue;
+    currentValue: NumberRangeComponentValue;
+    onValueChange: (arg1: NumberRangeComponentValue) => void;
+};
+
+const NumberRangeComponent = ({ values, currentValue, onValueChange }: NumberRangeComponentProps) => {
     return (
         <div {...stylex.props(styles.wrapper)}>
             <div {...stylex.props(styles.input_number_group)}>
                 <input
-                    value={values[0]}
-                    onChange={(e) => setValues((prev) => [Number(e.target.value), prev[1]])}
+                    value={currentValue[0]}
+                    onChange={(e) => onValueChange([Number(e.target.value), currentValue[1]])}
                     type='text'
                     name=''
                     {...stylex.props(styles.input_number)}
                 />
                 <div {...stylex.props(styles.divider)}></div>
                 <input
-                    value={values[1]}
-                    onChange={(e) => setValues((prev) => [prev[0], Number(e.target.value)])}
+                    value={currentValue[1]}
+                    onChange={(e) => onValueChange([currentValue[0], Number(e.target.value)])}
                     type='text'
                     name=''
                     {...stylex.props(styles.input_number)}
                 />
             </div>
             <Slider.Root
-                value={values}
-                onValueChange={(vals) => setValues(vals)}
-                min={0}
-                max={1000}
+                value={currentValue}
+                onValueChange={(newValue: [number, number]) => onValueChange(newValue)}
+                min={values[0]}
+                max={values[1]}
                 step={1}
                 minStepsBetweenThumbs={1}
                 {...stylex.props(styles.slider_root)}>
