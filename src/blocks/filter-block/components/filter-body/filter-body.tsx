@@ -47,34 +47,20 @@ export const FilterBody = () => {
 
 const FilterItem = ({ type, name, values, currentValue }) => {
     const dispatch = useDispatch();
-    const onValueChange = (value: FilterState['currentValue']) => dispatch(filterChange({ filterName: name, currentValue: value }));
+    const props = {
+        values,
+        currentValue,
+        onValueChange: (value: FilterState['currentValue']) => dispatch(filterChange({ filterName: name, currentValue: value })),
+    };
 
-    if (type === FilterTypes.select) {
-        return (
-            <li {...stylex.props(styles.filter_item)}>
-                <span {...stylex.props(styles.item_caption)}>{name} </span>
-                <SelectComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />
-            </li>
-        );
-    }
-
-    if (type === FilterTypes.toggles) {
-        return (
-            <li {...stylex.props(styles.filter_item)}>
-                <span {...stylex.props(styles.item_caption)}>{name} </span>
-                <ToggleGroupComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />
-            </li>
-        );
-    }
-
-    if (type === FilterTypes.numberRange) {
-        return (
-            <li {...stylex.props(styles.filter_item)}>
-                <span {...stylex.props(styles.item_caption)}>{name} </span>
-                <NumberRangeComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />
-            </li>
-        );
-    }
+    return (
+        <li {...stylex.props(styles.filter_item)}>
+            <span {...stylex.props(styles.item_caption)}>{name}</span>
+            {type === FilterTypes.select && <SelectComponent {...props} />}
+            {type === FilterTypes.toggles && <ToggleGroupComponent {...props} />}
+            {type === FilterTypes.numberRange && <NumberRangeComponent {...props} />}
+        </li>
+    );
 
     return null;
 };
