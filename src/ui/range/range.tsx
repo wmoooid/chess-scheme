@@ -1,21 +1,23 @@
 import * as Slider from '@radix-ui/react-slider';
 import * as stylex from '@stylexjs/stylex';
-import { styles } from './number-range.styles';
+import { styles } from './range.styles';
 
-export type NumberRangeComponentValue = [number, number];
+export type RangeComponentValue = [number, number];
 
-type NumberRangeComponentProps = {
-    values: NumberRangeComponentValue;
-    currentValue: NumberRangeComponentValue;
-    onValueChange: (arg1: NumberRangeComponentValue) => void;
+type RangeComponentProps = {
+    values: RangeComponentValue;
+    currentValue: RangeComponentValue;
+    onValueChange: (arg1: RangeComponentValue) => void;
 };
 
-const NumberRangeComponent = ({ values, currentValue, onValueChange }: NumberRangeComponentProps) => {
+const formatPrice = (price: number) => new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(price);
+
+export const RangeComponent = ({ values, currentValue, onValueChange }: RangeComponentProps) => {
     return (
         <div {...stylex.props(styles.wrapper)}>
             <div {...stylex.props(styles.input_number_group)}>
                 <input
-                    value={currentValue[0]}
+                    value={formatPrice(currentValue[0])}
                     onChange={(e) => onValueChange([Number(e.target.value), currentValue[1]])}
                     type='text'
                     name=''
@@ -23,7 +25,7 @@ const NumberRangeComponent = ({ values, currentValue, onValueChange }: NumberRan
                 />
                 <div {...stylex.props(styles.divider)}></div>
                 <input
-                    value={currentValue[1]}
+                    value={formatPrice(currentValue[1])}
                     onChange={(e) => onValueChange([currentValue[0], Number(e.target.value)])}
                     type='text'
                     name=''
@@ -47,5 +49,3 @@ const NumberRangeComponent = ({ values, currentValue, onValueChange }: NumberRan
         </div>
     );
 };
-
-export default NumberRangeComponent;

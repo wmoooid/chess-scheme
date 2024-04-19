@@ -30,7 +30,7 @@ export const styles = stylex.create({
         },
         pointerEvents: {
             default: 'all',
-            ":is([data-state='on'])": 'none',
+            // ":is([data-state='on'])": 'none',
         },
         fontWeight: {
             default: 400,

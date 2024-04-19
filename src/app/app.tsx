@@ -1,11 +1,9 @@
-import FilterWrapper from '@/blocks/filter-block';
-import ChessGrid from '@/blocks/chess-grid';
+import ApartmentsFilter from '@/blocks/apartments-filter';
 
 const App = () => {
     return (
         <>
-            <FilterWrapper />
-            <ChessGrid />
+            <ApartmentsFilter />
         </>
     );
 };

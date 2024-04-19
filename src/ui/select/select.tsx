@@ -3,15 +3,15 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons
 import { styles } from './select.styles';
 import stylex from '@stylexjs/stylex';
 
-export type SelectComponentList = SelectComponentValue[];
-export type SelectComponentValue = string;
+type SelectComponentList = SelectComponentValue[];
+type SelectComponentValue = string;
 type SelectComponentProps = {
     values: SelectComponentList;
     currentValue: SelectComponentValue;
     onValueChange: (arg1: SelectComponentValue) => void;
 };
 
-const SelectComponent = ({ values, currentValue, onValueChange }: SelectComponentProps) => {
+export const SelectComponent = ({ values, currentValue, onValueChange }: SelectComponentProps) => {
     return (
         <Select.Root value={currentValue} onValueChange={(newValue) => onValueChange(newValue)}>
             <Select.Trigger {...stylex.props(styles.select_trigger)}>
@@ -51,5 +51,3 @@ const SelectItem = ({ name }: Readonly<{ name: string }>) => {
         </Select.Item>
     );
 };
-
-export default SelectComponent;

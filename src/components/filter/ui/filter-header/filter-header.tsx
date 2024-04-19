@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { ViewGridIcon, ViewHorizontalIcon } from '@radix-ui/react-icons';
-import { ToggleGroupComponent, ToggleGroupItemProps } from '@/ui/toggle-group/toggle-group';
+import { ToggleGroupComponent, ToggleGroupItemProps } from '@/ui/toggles/toggles';
 
 const styles = stylex.create({
     wrapper: {
@@ -30,9 +30,7 @@ export const FilterHeader = () => {
     return (
         <div {...stylex.props(styles.wrapper)}>
             <h1 {...stylex.props(styles.heading)}>Find an apartment</h1>
-            <div {...stylex.props(styles.tabs_wrapper)}>
-                <ToggleGroupComponent itemsList={TABS_LIST} />
-            </div>
+            <div {...stylex.props(styles.tabs_wrapper)}>{/* <ToggleGroupComponent itemsList={TABS_LIST} /> */}</div>
         </div>
     );
 };
