@@ -1,9 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
-import { useDeferredValue } from 'react';
 import { globals } from '@/app/styles/globals.stylex';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store/config/store';
 import { styles } from './chess-grid.style';
+import { useDeferredValue } from 'react';
+import React from 'react';
 
 type ChessLineProps = {
     cellsLine: ChessCellProps[];
@@ -18,13 +19,12 @@ type ChessCellProps = {
 
 export const ChessGrid = () => {
     const apartmentsList = useSelector((state: RootState) => state.filter.apartmentsList);
-    const defferedList = useDeferredValue(apartmentsList);
 
     return (
         <section {...stylex.props(styles.section)}>
             <div {...stylex.props(globals.container)}>
                 <div {...stylex.props(styles.chess_body)}>
-                    {defferedList.map((line, index) => (
+                    {apartmentsList.map((line, index) => (
                         <ChessLine key={'line' + index} cellsLine={line} />
                     ))}
                 </div>
@@ -34,20 +34,22 @@ export const ChessGrid = () => {
 };
 
 const ChessLine = ({ cellsLine }: ChessLineProps) => {
+    const deferredLine = useDeferredValue(cellsLine);
+
     return (
         <ul {...stylex.props(styles.chess_line)}>
-            {cellsLine.map((props) => (
+            {deferredLine.map((props) => (
                 <ChessCell key={props.rooms + props.area} {...props} />
             ))}
         </ul>
     );
 };
 
-const ChessCell = ({ status, rooms, area, isFiltered }: ChessCellProps) => {
+const ChessCell = React.memo(({ status, rooms, area, isFiltered }: ChessCellProps) => {
     return (
         <li {...stylex.props(styles.chess_cell, styles[`chess_cell_${status}`], isFiltered && styles.chess_cell_filtered)}>
             <strong {...stylex.props(styles.cell_rooms)}>{rooms}</strong>
             {!(status === 'sold') && <small {...stylex.props(styles.cell_area)}>{area}</small>}
         </li>
     );
-};
+});

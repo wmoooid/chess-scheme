@@ -53,7 +53,9 @@ export function generateFiltersList(apartmentsList: ApartmentsList) {
     const priceFilter: FilterRangeProps = {
         type: FilterType.range,
         name: FilterName.price,
+        //@ts-expect-error временный null
         values: null,
+        //@ts-expect-error временный null
         currentValue: null,
         checkKey: 'price',
     };
@@ -61,7 +63,9 @@ export function generateFiltersList(apartmentsList: ApartmentsList) {
     const areaFilter: FilterRangeProps = {
         type: FilterType.range,
         name: FilterName.area,
+        //@ts-expect-error временный null
         values: null,
+        //@ts-expect-error временный null
         currentValue: null,
         checkKey: 'area',
     };

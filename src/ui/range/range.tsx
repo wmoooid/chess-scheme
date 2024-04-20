@@ -10,7 +10,7 @@ type RangeComponentProps = {
     onValueChange: (arg1: RangeComponentValue) => void;
 };
 
-const formatPrice = (price: number) => new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(price);
+const formatPrice = (price: number) => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(price);
 
 export const RangeComponent = ({ values, currentValue, onValueChange }: RangeComponentProps) => {
     return (

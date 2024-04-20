@@ -1,9 +1,9 @@
 import { generateFiltersList } from '../helpers/generate-data';
 
 export enum FilterType {
-    'select',
-    'toggles',
-    'range',
+    select = 'select',
+    toggles = 'toggles',
+    range = 'range',
 }
 
 export enum FilterName {

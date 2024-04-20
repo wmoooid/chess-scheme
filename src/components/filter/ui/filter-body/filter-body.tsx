@@ -6,6 +6,7 @@ import { RangeComponent } from '@/ui/range/range';
 import { SelectComponent } from '@/ui/select/select';
 import { TogglesComponent } from '@/ui/toggles/toggles';
 import * as stylex from '@stylexjs/stylex';
+import React from 'react';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -45,7 +46,7 @@ export const FilterBody = () => {
     );
 };
 
-const FilterItem: FC<FilterProps> = ({ type, name, values, currentValue }) => {
+const FilterItem: FC<FilterProps> = React.memo(({ type, name, values, currentValue }) => {
     const dispatch = useDispatch();
     const onValueChange = (value: FilterValue) => dispatch(filterChange({ filterName: name, newValue: value }));
 
@@ -57,6 +58,4 @@ const FilterItem: FC<FilterProps> = ({ type, name, values, currentValue }) => {
             {type === FilterType.range && <RangeComponent values={values} currentValue={currentValue} onValueChange={onValueChange} />}
         </li>
     );
-
-    return null;
-};
+});
