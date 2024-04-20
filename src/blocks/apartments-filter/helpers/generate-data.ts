@@ -53,14 +53,16 @@ export function generateFiltersList(apartmentsList: ApartmentsList) {
     const priceFilter: FilterRangeProps = {
         type: FilterType.range,
         name: FilterName.price,
-
+        values: null,
+        currentValue: null,
         checkKey: 'price',
     };
 
     const areaFilter: FilterRangeProps = {
         type: FilterType.range,
         name: FilterName.area,
-
+        values: null,
+        currentValue: null,
         checkKey: 'area',
     };
 

@@ -16,8 +16,8 @@ export enum FilterName {
 export type FilterBaseProps<Type, ValuesList, CurrentValue> = {
     type: Type;
     name: FilterName;
-    values?: ValuesList;
-    currentValue?: CurrentValue;
+    values: ValuesList;
+    currentValue: CurrentValue;
     checkKey: string;
 };
 

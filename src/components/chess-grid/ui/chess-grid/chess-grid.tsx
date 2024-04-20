@@ -24,9 +24,8 @@ export const ChessGrid = () => {
         <section {...stylex.props(styles.section)}>
             <div {...stylex.props(globals.container)}>
                 <div {...stylex.props(styles.chess_body)}>
-                    {defferedList.map((line) => (
-                        // @ts-expect-error test data
-                        <ChessLine key={line[0].state + line[1].area + line[2].rooms + line[3].area} cellsLine={line} />
+                    {defferedList.map((line, index) => (
+                        <ChessLine key={'line' + index} cellsLine={line} />
                     ))}
                 </div>
             </div>
@@ -38,7 +37,7 @@ const ChessLine = ({ cellsLine }: ChessLineProps) => {
     return (
         <ul {...stylex.props(styles.chess_line)}>
             {cellsLine.map((props) => (
-                <ChessCell key={props.status + props.rooms + props.area} {...props} />
+                <ChessCell key={props.rooms + props.area} {...props} />
             ))}
         </ul>
     );
