@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { generateApartmentsList, generateFiltersList } from '../helpers/generate-data';
 import { FilterName, FilterValue } from '../types/filter-types';
-import { startTransition } from 'react';
 
 const apartmentsList = generateApartmentsList();
 const filtersList = generateFiltersList(apartmentsList);
@@ -27,20 +26,18 @@ export const apartmentsFilterSlice = createSlice({
 
             state.apartmentsList.forEach((line) =>
                 line.forEach((cell) => {
-                    startTransition(() => {
-                        if (cell.status === 'sold') return;
+                    if (cell.status === 'sold') return;
 
-                        const result: boolean[] = [];
+                    const result: boolean[] = [];
 
-                        state.filtersList.forEach(({ currentValue, checkKey }) => {
-                            if (!currentValue) return;
+                    state.filtersList.forEach(({ currentValue, checkKey }) => {
+                        if (!currentValue) return;
 
-                            if (typeof currentValue === 'string') result.push(checkString(currentValue, cell[checkKey] as string));
-                            if (typeof currentValue === 'object') result.push(checkRange(currentValue, cell[checkKey] as number));
-                        });
-
-                        cell.isFiltered = result.some((a) => a);
+                        if (typeof currentValue === 'string') result.push(checkString(currentValue, cell[checkKey] as string));
+                        if (typeof currentValue === 'object') result.push(checkRange(currentValue, cell[checkKey] as number));
                     });
+
+                    cell.isFiltered = result.some((a) => a);
                 }),
             );
 
