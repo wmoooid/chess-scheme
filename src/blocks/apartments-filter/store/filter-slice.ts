@@ -35,8 +35,8 @@ export const apartmentsFilterSlice = createSlice({
                         state.filtersList.forEach(({ currentValue, checkKey }) => {
                             if (!currentValue) return;
 
-                            if (typeof currentValue === 'string') result.push(checkString(currentValue, cell[checkKey]));
-                            if (typeof currentValue === 'object') result.push(checkRange(currentValue, cell[checkKey]));
+                            if (typeof currentValue === 'string') result.push(checkString(currentValue, cell[checkKey] as string));
+                            if (typeof currentValue === 'object') result.push(checkRange(currentValue, cell[checkKey] as number));
                         });
 
                         cell.isFiltered = result.some((a) => a);

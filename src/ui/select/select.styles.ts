@@ -44,12 +44,11 @@ export const styles = stylex.create({
         color: {
             default: colors.mainColor,
             ":is([data-state='checked'])": colors.white,
-            ':is([data-highlighted])': colors.mainColor,
         },
         backgroundColor: {
             default: null,
-            ":is([data-state='checked'])": colors.accentColor,
             ':is([data-highlighted])': colors.accentBackground,
+            ":is([data-state='checked'])": colors.accentColor,
         },
 
         userSelect: 'none',

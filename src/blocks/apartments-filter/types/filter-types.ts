@@ -1,4 +1,5 @@
 import { generateFiltersList } from '../helpers/generate-data';
+import { ApartmentProps } from './apartments-types';
 
 export enum FilterType {
     select = 'select',
@@ -18,7 +19,7 @@ export type FilterBaseProps<Type, ValuesList, CurrentValue> = {
     name: FilterName;
     values: ValuesList;
     currentValue: CurrentValue;
-    checkKey: string;
+    checkKey: keyof ApartmentProps;
 };
 
 type FilterSelectValue = string;
