@@ -7,17 +7,18 @@ export enum FilterType {
 }
 
 export enum FilterName {
-    'Project',
-    'Bedrooms',
-    'Price',
-    'Area',
+    project = 'Project',
+    bedrooms = 'Bedrooms',
+    price = 'Price',
+    area = 'Area',
 }
 
 export type FilterBaseProps<Type, ValuesList, CurrentValue> = {
     type: Type;
     name: FilterName;
-    values: ValuesList;
-    currentValue: CurrentValue;
+    values?: ValuesList;
+    currentValue?: CurrentValue;
+    checkKey: string;
 };
 
 type FilterSelectValue = string;

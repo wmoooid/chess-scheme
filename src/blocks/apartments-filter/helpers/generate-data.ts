@@ -6,7 +6,7 @@ export const projectList = ['Stonehenge'] as const;
 export const statusList = ['free', 'free', 'booked', 'sold'] as const;
 export const roomTypeList = ['St', '1BR', '2BR', '3BR'] as const;
 
-export function generateApartmentsList(lines = 8, cells = 15, projectName = projectList[0]) {
+export function generateApartmentsList(lines = 8, cells = 15, project = projectList[0]) {
     const result = Array(lines)
         .fill(0)
         .map(() => {
@@ -21,7 +21,7 @@ export function generateApartmentsList(lines = 8, cells = 15, projectName = proj
 
                     return {
                         status,
-                        projectName,
+                        project,
                         rooms,
                         price,
                         area,
@@ -36,30 +36,32 @@ export function generateApartmentsList(lines = 8, cells = 15, projectName = proj
 export function generateFiltersList(apartmentsList: ApartmentsList) {
     const projectFilter: FilterSelectProps = {
         type: FilterType.select,
-        name: FilterName.Project,
+        name: FilterName.project,
         values: [...projectList],
         currentValue: projectList[0],
+        checkKey: 'project',
     };
 
     const bedroomsFilter: FilterTogglesProps = {
         type: FilterType.toggles,
-        name: FilterName.Bedrooms,
+        name: FilterName.bedrooms,
         values: [...roomTypeList],
         currentValue: '',
+        checkKey: 'rooms',
     };
 
     const priceFilter: FilterRangeProps = {
         type: FilterType.range,
-        name: FilterName.Price,
-        values: null,
-        currentValue: null,
+        name: FilterName.price,
+
+        checkKey: 'price',
     };
 
     const areaFilter: FilterRangeProps = {
         type: FilterType.range,
-        name: FilterName.Area,
-        values: null,
-        currentValue: null,
+        name: FilterName.area,
+
+        checkKey: 'area',
     };
 
     for (const line of apartmentsList) {
