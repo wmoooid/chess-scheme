@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { generateFiltersList } from '../helpers/generate-data';
-import { FilterName, FilterValue, FiltersList } from '../types/filter-types';
-import { apartmentsList } from './apartments-slice';
+import { FilterName, FilterValue, FiltersList } from './filter-types';
+import { apartmentsList } from '../../../blocks/apartments-filter/model/apartments-slice';
+import { generateFiltersList } from '../lib/generate-filter-list';
 
 // const initialState = generateFiltersList(store.getState().apartments);
 const initialState = generateFiltersList(apartmentsList);

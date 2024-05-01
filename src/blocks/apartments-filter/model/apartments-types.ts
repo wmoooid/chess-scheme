@@ -1,5 +1,5 @@
 import { ArrayToTuple } from 'types/utils';
-import { generateApartmentsList, projectList, roomTypeList, statusList } from '../helpers/generate-data';
+import { generateApartmentsList, projectList, roomTypeList, statusList } from '../helpers/generate-apartments-list';
 
 export type ProjectName = ArrayToTuple<typeof projectList>;
 export type ApartmentStatus = ArrayToTuple<typeof statusList>;

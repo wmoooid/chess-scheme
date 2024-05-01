@@ -1,10 +1,10 @@
 import { RootState } from '@/app/store/config/store';
 import { colors } from '@/app/styles/globals.stylex';
-import { changeFilter } from '@/blocks/apartments-filter/store/filter-slice';
-import { FilterProps, FilterType, FilterValue } from '@/blocks/apartments-filter/types/filter-types';
-import { RangeComponent } from '@/ui/range/range';
-import { SelectComponent } from '@/ui/select/select';
-import { TogglesComponent } from '@/ui/toggles/toggles';
+import { changeFilter } from '@/components/filter/model/filter-slice';
+import { FilterProps, FilterType, FilterValue } from '@/components/filter/model/filter-types';
+import { RangeComponent } from '@/shared/ui/range/range';
+import { SelectComponent } from '@/shared/ui/select/select';
+import { TogglesComponent } from '@/shared/ui/toggles/toggles';
 import * as stylex from '@stylexjs/stylex';
 import React from 'react';
 import { FC } from 'react';

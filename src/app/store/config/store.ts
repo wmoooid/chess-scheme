@@ -1,19 +1,9 @@
 import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit';
-import filterReducer, { changeFilter } from '@/blocks/apartments-filter/store/filter-slice';
-import apartmentsReducer, { applyFilter } from '@/blocks/apartments-filter/store/apartments-slice';
+import filterReducer from '@/components/filter/model/filter-slice';
+import apartmentsReducer from '@/blocks/apartments-filter/model/apartments-slice';
 
 export const listenerMiddleware = createListenerMiddleware();
 export const startAppListening = listenerMiddleware.startListening.withTypes<RootState, AppDispatch>();
-
-startAppListening({
-    actionCreator: changeFilter,
-    effect: async (_, listenerApi) => {
-        listenerApi.cancelActiveListeners();
-        await listenerApi.delay(100);
-        const filterState = listenerApi.getState().filter;
-        listenerApi.dispatch(applyFilter(filterState));
-    },
-});
 
 export const store = configureStore({
     reducer: {

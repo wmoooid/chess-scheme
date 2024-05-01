@@ -1,5 +1,5 @@
-import { generateFiltersList } from '../helpers/generate-data';
-import { ApartmentProps } from './apartments-types';
+import { ApartmentProps } from '@/blocks/apartments-filter/model/apartments-types';
+import { generateFiltersList } from '../lib/generate-filter-list';
 
 export enum FilterType {
     select = 'select',
