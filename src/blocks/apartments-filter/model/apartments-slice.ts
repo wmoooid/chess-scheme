@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { generateApartmentsList } from '../helpers/generate-apartments-list';
+import { generateApartmentsList } from '../lib/generate-apartments-list';
 import { FiltersList } from '../../../components/filter/model/filter-types';
 
 export const apartmentsList = generateApartmentsList();
