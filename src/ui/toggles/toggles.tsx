@@ -9,7 +9,8 @@ type TogglesComponentProps = {
     values: TogglesComponentList;
     currentValue: TogglesComponentValue;
     onValueChange: (arg1: TogglesComponentValue) => void;
-};
+} & typeof ToggleGroup.Root &
+    typeof ToggleGroup.Item;
 
 export const TogglesComponent = ({ values, currentValue, onValueChange }: TogglesComponentProps) => {
     if (!values) return;
