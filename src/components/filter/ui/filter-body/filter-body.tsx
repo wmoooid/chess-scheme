@@ -1,6 +1,6 @@
 import { RootState } from '@/app/store/config/store';
 import { colors } from '@/app/styles/globals.stylex';
-import { filterChange } from '@/blocks/apartments-filter/store/filter-slice';
+import { changeFilter } from '@/blocks/apartments-filter/store/filter-slice';
 import { FilterProps, FilterType, FilterValue } from '@/blocks/apartments-filter/types/filter-types';
 import { RangeComponent } from '@/ui/range/range';
 import { SelectComponent } from '@/ui/select/select';
@@ -33,8 +33,7 @@ const styles = stylex.create({
 });
 
 export const FilterBody = () => {
-    const filterState = useSelector((state: RootState) => state.filter.filtersList);
-
+    const filterState = useSelector((state: RootState) => state.filter);
     return (
         <div {...stylex.props(styles.wrapper)}>
             <menu {...stylex.props(styles.filter_list)}>
@@ -48,7 +47,7 @@ export const FilterBody = () => {
 
 const FilterItem: FC<FilterProps> = React.memo(({ type, name, values, currentValue }) => {
     const dispatch = useDispatch();
-    const onValueChange = (value: FilterValue) => dispatch(filterChange({ filterName: name, newValue: value }));
+    const onValueChange = (value: FilterValue) => dispatch(changeFilter({ filterName: name, newValue: value }));
 
     return (
         <li {...stylex.props(styles.filter_item)}>

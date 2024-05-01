@@ -18,7 +18,7 @@ type ChessCellProps = {
 };
 
 export const ChessGrid = () => {
-    const apartmentsList = useSelector((state: RootState) => state.filter.apartmentsList);
+    const apartmentsList = useSelector((state: RootState) => state.apartments);
 
     return (
         <section {...stylex.props(styles.section)}>
