@@ -16,12 +16,11 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         changeFilter: (state: FiltersList, action: PayloadAction<changeFilterPayload>) => {
-            const changedFilter = state.find((item) => item.name === action.payload.filterName);
+            const index = state.findIndex((item) => item.name === action.payload.filterName);
 
-            if (!changedFilter) return;
-            changedFilter.currentValue = action.payload.newValue;
-
-            return state;
+            if (index !== -1) {
+                state[index].currentValue = action.payload.newValue;
+            }
         },
     },
 });

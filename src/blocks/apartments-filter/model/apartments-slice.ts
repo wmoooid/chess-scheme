@@ -17,19 +17,21 @@ export const apartmentsSlice = createSlice({
                 line.forEach((cell) => {
                     if (cell.status === 'sold') return;
 
-                    const result: boolean[] = [];
+                    cell.isFiltered = action.payload.some(({ currentValue, checkKey }) => {
+                        if (!currentValue) return false;
 
-                    action.payload.forEach(({ currentValue, checkKey }) => {
-                        if (!currentValue) return;
+                        if (typeof currentValue === 'string') {
+                            return checkString(currentValue, cell[checkKey] as string);
+                        }
 
-                        if (typeof currentValue === 'string') result.push(checkString(currentValue, cell[checkKey] as string));
-                        if (typeof currentValue === 'object') result.push(checkRange(currentValue, cell[checkKey] as number));
+                        if (typeof currentValue === 'object') {
+                            return checkRange(currentValue, cell[checkKey] as number);
+                        }
+
+                        return false;
                     });
-
-                    cell.isFiltered = result.some((a) => a);
                 }),
             );
-
             return state;
         },
     },

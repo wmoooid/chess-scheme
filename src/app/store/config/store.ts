@@ -8,8 +8,8 @@ export const startAppListening = listenerMiddleware.startListening.withTypes<Roo
 startAppListening({
     actionCreator: changeFilter,
     effect: async (_, listenerApi) => {
-        listenerApi.cancelActiveListeners();
-        await listenerApi.delay(50);
+        // listenerApi.cancelActiveListeners();
+        // await listenerApi.delay(50);
         const filterState = listenerApi.getState().filter;
         listenerApi.dispatch(applyFilter(filterState));
     },
