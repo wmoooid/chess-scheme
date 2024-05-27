@@ -5,6 +5,7 @@ import { RootState } from '@/app/store/config/store';
 import { styles } from './chess-grid.style';
 import { useDeferredValue } from 'react';
 import React from 'react';
+import { WithApartmentsHoverCard } from '@/components/apartments-hover-card/ui/apartments-hover-card';
 
 type ChessLineProps = {
     cellsLine: ChessCellProps[];
@@ -47,9 +48,11 @@ const ChessLine = ({ cellsLine }: ChessLineProps) => {
 
 const ChessCell = React.memo(({ status, rooms, area, isFiltered }: ChessCellProps) => {
     return (
-        <li {...stylex.props(styles.chess_cell, styles[`chess_cell_${status}`], isFiltered && styles.chess_cell_filtered)}>
-            <strong {...stylex.props(styles.cell_rooms)}>{rooms}</strong>
-            {!(status === 'sold') && <small {...stylex.props(styles.cell_area)}>{area}</small>}
-        </li>
+        <WithApartmentsHoverCard>
+            <li {...stylex.props(styles.chess_cell, styles[`chess_cell_${status}`], isFiltered && styles.chess_cell_filtered)}>
+                <strong {...stylex.props(styles.cell_rooms)}>{rooms}</strong>
+                {!(status === 'sold') && <small {...stylex.props(styles.cell_area)}>{area}</small>}
+            </li>
+        </WithApartmentsHoverCard>
     );
 });
