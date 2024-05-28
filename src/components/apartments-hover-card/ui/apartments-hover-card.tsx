@@ -8,7 +8,7 @@ type ApartmentsHoverCardProps = {
 } & HoverCard.HoverCardProps;
 
 const scaleIn = stylex.keyframes({
-    '0%': { transform: 'scale(0.95)', opacity: 0 },
+    '0%': { transform: 'translateY(0.5rem)', opacity: 0 },
     '100%': { transform: 'scale(1)', opacity: 1 },
 });
 
@@ -35,7 +35,7 @@ const styles = stylex.create({
 
 export const ApartmentsHoverCard: React.FC<ApartmentsHoverCardProps> = ({ children }) => {
     return (
-        <HoverCard.Root openDelay={0} closeDelay={25}>
+        <HoverCard.Root openDelay={300} closeDelay={0}>
             <HoverCard.Trigger asChild>{children}</HoverCard.Trigger>
             <HoverCard.Portal>
                 <HoverCard.Content {...stylex.props(styles.card_content)}>

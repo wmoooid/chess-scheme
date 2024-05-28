@@ -47,9 +47,13 @@ const ChessLine = ({ cellsLine }: ChessLineProps) => {
 };
 
 const ChessCell = React.memo(({ status, rooms, area, isFiltered }: ChessCellProps) => {
+    const isDisabled = status === 'sold' || isFiltered;
+
     return (
         <WithApartmentsHoverCard>
-            <li {...stylex.props(styles.chess_cell, styles[`chess_cell_${status}`], isFiltered && styles.chess_cell_filtered)}>
+            <li
+                {...stylex.props(styles.chess_cell, styles[`chess_cell_${status}`], isFiltered && styles.chess_cell_filtered)}
+                style={{ pointerEvents: isDisabled ? 'none' : 'auto' }}>
                 <strong {...stylex.props(styles.cell_rooms)}>{rooms}</strong>
                 {!(status === 'sold') && <small {...stylex.props(styles.cell_area)}>{area}</small>}
             </li>

@@ -38,6 +38,11 @@ export const styles = stylex.create({
         userSelect: 'none',
 
         transition: 'background-color 200ms ease-out',
+
+        opacity: {
+            default: 1,
+            ':hover': 0.8,
+        },
     },
 
     chess_cell_free: {
